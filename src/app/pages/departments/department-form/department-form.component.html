@@ -1,0 +1,75 @@
+<div class="modal-backdrop" (click)="cancel.emit()">
+  <div class="modal-panel" (click)="$event.stopPropagation()">
+
+    <div class="modal-header">
+      <div class="modal-title-wrap">
+        <div class="modal-icon">
+          <svg viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+        <div>
+          <h2 class="modal-title">{{ isEdit ? 'Edit Department' : 'Add Department' }}</h2>
+          <p class="modal-sub">{{ isEdit ? 'Update department information' : 'Fill in the details to create a new department' }}</p>
+        </div>
+      </div>
+      <button class="modal-close" (click)="cancel.emit()">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+      </button>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="modal-form" autocomplete="off">
+
+      <!-- Department Name -->
+      <div class="form-field" [class.field-error]="isInvalid('name')">
+        <label class="form-label">Department Name <span class="required">*</span></label>
+        <div class="input-wrap">
+          <span class="input-icon">
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd"/>
+            </svg>
+          </span>
+          <input type="text" class="form-input" placeholder="e.g. Engineering" formControlName="name">
+        </div>
+        @if (isInvalid('name')) {
+          <span class="form-error">
+            @if (f('name').errors?.['required']) { Department name is required. }
+            @else if (f('name').errors?.['minlength']) { Minimum 2 characters. }
+            @else if (f('name').errors?.['maxlength']) { Maximum 100 characters. }
+          </span>
+        }
+      </div>
+
+      <!-- Location -->
+      <div class="form-field" [class.field-error]="isInvalid('location')">
+        <label class="form-label">Location <span class="required">*</span></label>
+        <div class="input-wrap">
+          <span class="input-icon">
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+            </svg>
+          </span>
+          <input type="text" class="form-input" placeholder="e.g. New York, NY" formControlName="location">
+        </div>
+        @if (isInvalid('location')) {
+          <span class="form-error">
+            @if (f('location').errors?.['required']) { Location is required. }
+            @else if (f('location').errors?.['minlength']) { Minimum 2 characters. }
+            @else if (f('location').errors?.['maxlength']) { Maximum 100 characters. }
+          </span>
+        }
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-modal-cancel" (click)="cancel.emit()">Cancel</button>
+        <button type="submit" class="btn-modal-submit" [disabled]="submitting">
+          @if (submitting) {
+            <span class="btn-spinner"></span>
+          }
+          {{ submitting ? 'Saving...' : (isEdit ? 'Update Department' : 'Add Department') }}
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

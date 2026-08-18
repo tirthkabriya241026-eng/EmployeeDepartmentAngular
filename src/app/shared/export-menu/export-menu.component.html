@@ -1,0 +1,48 @@
+<div class="export-wrap">
+
+  <button class="btn-export"
+          (click)="toggle($event)"
+          [class.btn-export-open]="open()"
+          [disabled]="loadingExcel() || loadingPdf()">
+    @if (loadingExcel() || loadingPdf()) {
+      <span class="export-spinner"></span>
+      Exporting…
+    } @else {
+      <svg viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+      </svg>
+      Export
+      <svg class="chevron" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+      </svg>
+    }
+  </button>
+
+  @if (open()) {
+    <div class="export-dropdown">
+      <button class="export-option" (click)="exportExcel()">
+        <span class="export-option-icon export-option-icon-excel">
+          <svg viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/>
+          </svg>
+        </span>
+        <span class="export-option-text">
+          <span class="export-option-label">Excel</span>
+          <span class="export-option-desc">.xlsx spreadsheet</span>
+        </span>
+      </button>
+      <button class="export-option" (click)="exportPdf()">
+        <span class="export-option-icon export-option-icon-pdf">
+          <svg viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/>
+          </svg>
+        </span>
+        <span class="export-option-text">
+          <span class="export-option-label">PDF</span>
+          <span class="export-option-desc">.pdf document</span>
+        </span>
+      </button>
+    </div>
+  }
+
+</div>

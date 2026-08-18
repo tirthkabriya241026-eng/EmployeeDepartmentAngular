@@ -1,0 +1,118 @@
+<div class="register-root">
+  <div class="bg-layer" aria-hidden="true">
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+    <div class="bg-grid"></div>
+  </div>
+
+  <aside class="left-panel" aria-hidden="true">
+    <div class="lp-inner">
+      <div class="lp-brand">
+        <div class="lp-logo-wrap">
+          <svg class="lp-logo-svg" viewBox="0 0 44 44" fill="none">
+            <rect width="44" height="44" rx="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+            <path d="M22 8C14.27 8 8 14.27 8 22s6.27 14 14 14 14-6.27 14-14S29.73 8 22 8zm0 5.4c2.98 0 5.4 2.42 5.4 5.4s-2.42 5.4-5.4 5.4-5.4-2.42-5.4-5.4 2.42-5.4 5.4-5.4zm0 19.8c-4.18 0-7.74-2.14-9.87-5.38.07-3.28 6.58-5.12 9.87-5.12s9.8 1.84 9.87 5.12c-2.13 3.24-5.69 5.38-9.87 5.38z" fill="white"/>
+          </svg>
+        </div>
+        <div class="lp-brand-text">
+          <span class="lp-brand-name">HR</span>
+          <span class="lp-brand-tagline">Smart Employee Management Platform</span>
+        </div>
+        <div class="lp-badge">
+          <span class="lp-badge-dot"></span>
+          Enterprise
+        </div>
+      </div>
+
+      <div class="lp-headline">
+        <h2 class="lp-headline-title">
+          Join your team<br>
+          <em class="lp-headline-em">in seconds !</em>
+        </h2>
+        <p class="lp-headline-sub">
+          Create your account and start managing your workforce with powerful HR tools.
+        </p>
+      </div>
+    </div>
+  </aside>
+
+  <main class="right-panel" role="main">
+    <div class="rp-wrap">
+      <header class="rp-topnav" role="banner">
+        <div class="rp-topnav-brand">
+          <svg class="rp-topnav-logo" viewBox="0 0 28 28" fill="none">
+            <rect width="28" height="28" rx="8" fill="#2563EB"/>
+            <path d="M14 5C8.48 5 4 9.48 4 15s4.48 10 10 10 10-4.48 10-10S19.52 5 14 5zm0 3.6c1.99 0 3.6 1.61 3.6 3.6s-1.61 3.6-3.6 3.6-3.6-1.61-3.6-3.6 1.61-3.6 3.6-3.6zm0 14.4c-2.67 0-4.92-1.38-6.3-3.45.04-2.1 4.2-3.3 6.3-3.3s6.26 1.2 6.3 3.3c-1.38 2.07-3.63 3.45-6.3 3.45z" fill="white"/>
+          </svg>
+          <span>HR</span>
+        </div>
+      </header>
+
+      @if (!registered) {
+        <section class="register-card" [class.card-loading]="isLoading" aria-label="Registration form">
+          <div class="card-head">
+            <h1 class="card-title">Create your account</h1>
+            <p class="card-subtitle">Enter your details — your login credentials will be emailed to you.</p>
+          </div>
+
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="card-form" novalidate>
+            <div class="field" [class.field--error]="fullNameInvalid" [class.field--valid]="fullNameValid">
+              <label for="reg-fullname" class="field__label">Full name</label>
+              <div class="field__wrap">
+                <input id="reg-fullname" type="text" class="field__input" formControlName="fullName" placeholder="John Doe" />
+              </div>
+              @if (fullNameInvalid) {
+                <p class="field__error" role="alert">Full name is required.</p>
+              }
+            </div>
+
+            <div class="field" [class.field--error]="emailInvalid" [class.field--valid]="emailValid">
+              <label for="reg-email" class="field__label">Email address</label>
+              <div class="field__wrap">
+                <input id="reg-email" type="email" class="field__input" formControlName="email" placeholder="email@example.com" />
+              </div>
+              @if (emailInvalid) {
+                <p class="field__error" role="alert">Please enter a valid email address.</p>
+              }
+            </div>
+
+            <div class="field" [class.field--error]="passwordInvalid" [class.field--valid]="passwordValid">
+              <label for="reg-password" class="field__label">Password</label>
+              <div class="field__wrap">
+                <input id="reg-password" type="password" class="field__input" formControlName="password" placeholder="Password" />
+              </div>
+              @if (passwordInvalid) {
+                <p class="field__error" role="alert">Password must be at least 6 characters.</p>
+              }
+            </div>
+
+            <button type="submit" class="btn-submit" [disabled]="isLoading">
+              @if (isLoading) {
+                <span>Creating account…</span>
+              } @else {
+                <span>Register</span>
+              }
+            </button>
+          </form>
+
+          <p class="card-signin-link">
+            Already have an account? <a routerLink="/login" class="card-signin-link__anchor">Sign in</a>
+          </p>
+        </section>
+      }
+
+      @if (registered) {
+        <section class="success-card" role="alert" aria-live="polite">
+          <h1 class="sc-title">Account Created Successfully</h1>
+          <p class="sc-lead">A temporary password has been sent to <strong>{{ registeredEmail }}</strong>.</p>
+          <button class="btn-goto-login" (click)="goToLogin()" type="button">Go to Sign In</button>
+        </section>
+      }
+
+      <footer class="rp-footer">
+        <span>© 2026 HR Platform</span>
+      </footer>
+    </div>
+  </main>
+</div>

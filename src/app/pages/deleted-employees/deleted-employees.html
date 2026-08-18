@@ -1,0 +1,129 @@
+<div class="page-header">
+  <div>
+    <h1 class="page-title">Deleted Employees</h1>
+    <p class="page-subtitle">Archived employee records — restore to reactivate.</p>
+  </div>
+</div>
+
+<div class="table-card">
+
+  <!-- Toolbar -->
+  <div class="table-toolbar">
+    <div class="search-box">
+      <svg viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
+      </svg>
+      <input
+        type="text"
+        autocomplete="off"
+        placeholder="Search deleted employees..."
+        [ngModel]="searchTerm()"
+        (ngModelChange)="onSearch($event)">
+    </div>
+    <div class="toolbar-right">
+      <span class="deleted-badge">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9z" clip-rule="evenodd"/></svg>
+        {{ filtered().length }} archived
+      </span>
+    </div>
+  </div>
+
+  <!-- Loading -->
+  @if (loading()) {
+    <div class="skeleton-wrap">
+      @for (i of [1,2,3]; track i) {
+        <div class="skeleton-row">
+          <span class="skeleton" style="width:30px; height:14px;"></span>
+          <span class="skeleton" style="width:160px; height:14px;"></span>
+          <span class="skeleton" style="width:180px; height:14px;"></span>
+          <span class="skeleton" style="width:100px; height:14px;"></span>
+          <span class="skeleton" style="width:120px; height:28px; border-radius:8px;"></span>
+        </div>
+      }
+    </div>
+  }
+
+  <!-- Table -->
+  @if (!loading()) {
+    <div class="table-wrapper">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @if (filtered().length === 0) {
+            <tr class="empty-row">
+              <td colspan="6">
+                <div class="empty-state">
+                  <div class="empty-state-icon empty-state-icon-green">
+                    <svg viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                  </div>
+                  <p>No deleted employees</p>
+                  <span>All employees are active. Deleted employees will appear here for restoration.</span>
+                </div>
+              </td>
+            </tr>
+          }
+          @for (emp of paged(); track emp.empId; let idx = $index) {
+            <tr class="deleted-row">
+              <td class="row-num">{{ (currentPage() - 1) * pageSize() + idx + 1 }}</td>
+              <td>
+                <div class="employee-cell">
+                  <div class="emp-avatar emp-avatar-deleted">{{ emp.name.charAt(0).toUpperCase() }}</div>
+                  <div class="emp-info">
+                    <span class="emp-name">{{ emp.name }}</span>
+                    <span class="deleted-label">Deleted</span>
+                  </div>
+                </div>
+              </td>
+              <td class="cell-muted">{{ emp.email }}</td>
+              <td>
+                @if (emp.departmentName) {
+                  <span class="dept-badge">{{ emp.departmentName }}</span>
+                } @else {
+                  <span class="cell-muted">—</span>
+                }
+              </td>
+              <td class="cell-salary">{{ formatSalary(emp.salary) }}</td>
+              <td>
+                <button class="btn-restore" (click)="restore(emp)">
+                  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/></svg>
+                  Restore
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    @if (totalPages() > 1) {
+      <div class="pagination">
+        <button class="page-btn page-nav" (click)="goToPage(currentPage() - 1)" [disabled]="currentPage() === 1">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        </button>
+        @for (p of pageNumbers(); track $index) {
+          @if (p === '...') {
+            <span class="page-ellipsis">…</span>
+          } @else {
+            <button class="page-btn" [class.active]="p === currentPage()" (click)="goToPage(p)">{{ p }}</button>
+          }
+        }
+        <button class="page-btn page-nav" (click)="goToPage(currentPage() + 1)" [disabled]="currentPage() === totalPages()">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+        </button>
+      </div>
+    }
+  }
+
+</div>

@@ -1,0 +1,268 @@
+<!-- ═══ WELCOME BANNER ══════════════════════════════════════════ -->
+<div class="dash-banner">
+  <div class="dash-banner-orb dash-orb-1"></div>
+  <div class="dash-banner-orb dash-orb-2"></div>
+  <div class="dash-banner-grid"></div>
+  <div class="dash-banner-content">
+    <div class="dash-banner-left">
+      <div class="dash-eyebrow">
+        <span class="dash-live-dot"></span>
+        Live Dashboard
+      </div>
+      <h1 class="dash-banner-title">{{ greeting }}, Admin 👋</h1>
+      <p class="dash-banner-sub">Here's what's happening across your organization today.</p>
+    </div>
+    <div class="dash-banner-right">
+      <div class="dash-date-pill">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></svg>
+        {{ dateLabel }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 5 STAT CARDS ══════════════════════════════════════════ -->
+<div class="stat-row">
+
+  <!-- Total Employees -->
+  <div class="stat-card sc-indigo">
+    <div class="sc-glow"></div>
+    <div class="sc-top">
+      <div class="sc-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+        </svg>
+      </div>
+      <span class="sc-tag sc-tag-indigo">Total</span>
+    </div>
+    <div class="sc-value">{{ loading ? '—' : totalEmployees }}</div>
+    <div class="sc-label">Total Employees</div>
+    <div class="sc-footer">
+      <div class="sc-bars">
+        <span style="--h:40%"></span><span style="--h:65%"></span><span style="--h:50%"></span>
+        <span style="--h:80%"></span><span style="--h:60%"></span><span style="--h:90%"></span>
+        <span style="--h:75%"></span><span style="--h:95%"></span>
+      </div>
+      <a routerLink="/employees" class="sc-link">
+        View all
+        <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" clip-rule="evenodd"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Active Employees -->
+  <div class="stat-card sc-emerald">
+    <div class="sc-glow"></div>
+    <div class="sc-top">
+      <div class="sc-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+      </div>
+      <span class="sc-tag sc-tag-green">
+        <svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>
+        Active
+      </span>
+    </div>
+    <div class="sc-value">{{ loading ? '—' : activeEmployees }}</div>
+    <div class="sc-label">Active Employees</div>
+    <div class="sc-footer">
+      <div class="sc-progress-wrap">
+        <div class="sc-progress-bar sc-progress-green"
+          [style.width.%]="(!loading && totalEmployees) ? (activeEmployees / totalEmployees * 100) : 0">
+        </div>
+      </div>
+      <span class="sc-ratio-hint">
+        {{ (!loading && totalEmployees) ? ((activeEmployees / totalEmployees * 100) | number:'1.0-0') + '%' : '—' }}
+      </span>
+    </div>
+  </div>
+
+  <!-- Inactive Employees -->
+  <div class="stat-card sc-amber">
+    <div class="sc-glow"></div>
+    <div class="sc-top">
+      <div class="sc-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/>
+        </svg>
+      </div>
+      <span class="sc-tag sc-tag-amber">Inactive</span>
+    </div>
+    <div class="sc-value">{{ loading ? '—' : inactiveEmployees }}</div>
+    <div class="sc-label">Inactive Employees</div>
+    <div class="sc-footer">
+      <div class="sc-progress-wrap">
+        <div class="sc-progress-bar sc-progress-amber"
+          [style.width.%]="(!loading && totalEmployees) ? (inactiveEmployees / totalEmployees * 100) : 0">
+        </div>
+      </div>
+      <span class="sc-ratio-hint">
+        {{ (!loading && totalEmployees) ? ((inactiveEmployees / totalEmployees * 100) | number:'1.0-0') + '%' : '—' }}
+      </span>
+    </div>
+  </div>
+
+  <!-- Departments -->
+  <div class="stat-card sc-violet">
+    <div class="sc-glow"></div>
+    <div class="sc-top">
+      <div class="sc-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/>
+        </svg>
+      </div>
+      <span class="sc-tag sc-tag-violet">Depts</span>
+    </div>
+    <div class="sc-value">{{ loading ? '—' : totalDepartments }}</div>
+    <div class="sc-label">Departments</div>
+    <div class="sc-footer">
+      <div class="sc-bars sc-bars-violet">
+        <span style="--h:55%"></span><span style="--h:70%"></span><span style="--h:50%"></span>
+        <span style="--h:85%"></span><span style="--h:60%"></span><span style="--h:75%"></span>
+        <span style="--h:95%"></span><span style="--h:80%"></span>
+      </div>
+      <a routerLink="/departments" class="sc-link">
+        View all
+        <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" clip-rule="evenodd"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Average Salary -->
+  <div class="stat-card sc-sky">
+    <div class="sc-glow"></div>
+    <div class="sc-top">
+      <div class="sc-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+        </svg>
+      </div>
+      <span class="sc-tag sc-tag-sky">Avg</span>
+    </div>
+    <div class="sc-value sc-value-sm">
+      {{ loading ? '—' : (avgSalary | currency:'USD':'symbol':'1.0-0') }}
+    </div>
+    <div class="sc-label">Average Salary</div>
+    <div class="sc-footer">
+      <div class="sc-bars sc-bars-sky">
+        <span style="--h:30%"></span><span style="--h:55%"></span><span style="--h:70%"></span>
+        <span style="--h:45%"></span><span style="--h:80%"></span><span style="--h:65%"></span>
+        <span style="--h:90%"></span><span style="--h:75%"></span>
+      </div>
+      <span class="sc-ratio-hint">per employee</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ BOTTOM ROW ═════════════════════════════════════════════ -->
+<div class="dash-bottom">
+
+  <!-- Quick Actions -->
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-title-group">
+        <h2 class="panel-title">Quick Actions</h2>
+        <span class="panel-sub">Jump to key areas</span>
+      </div>
+    </div>
+    <div class="qa-list">
+
+      <a routerLink="/employees" class="qa-item qa-indigo">
+        <div class="qa-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+          </svg>
+        </div>
+        <div class="qa-body">
+          <strong>Employees</strong>
+          <span>View &amp; manage workforce</span>
+        </div>
+        <div class="qa-chevron">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" clip-rule="evenodd"/></svg>
+        </div>
+      </a>
+
+      <a routerLink="/departments" class="qa-item qa-violet">
+        <div class="qa-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/>
+          </svg>
+        </div>
+        <div class="qa-body">
+          <strong>Departments</strong>
+          <span>Org structure &amp; teams</span>
+        </div>
+        <div class="qa-chevron">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" clip-rule="evenodd"/></svg>
+        </div>
+      </a>
+
+      <a routerLink="/deleted-employees" class="qa-item qa-rose">
+        <div class="qa-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+          </svg>
+        </div>
+        <div class="qa-body">
+          <strong>Deleted Employees</strong>
+          <span>View &amp; restore archived records</span>
+        </div>
+        <div class="qa-chevron">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z" clip-rule="evenodd"/></svg>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- System Status -->
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-title-group">
+        <h2 class="panel-title">System Status</h2>
+        <span class="panel-sub">Infrastructure health</span>
+      </div>
+      <div class="panel-badge-ok">
+        <span class="dash-live-dot"></span>
+        All operational
+      </div>
+    </div>
+    <div class="sys-list">
+      <div class="sys-row">
+        <div class="sys-left">
+          <span class="sys-dot dot-green"></span>
+          <span class="sys-name">API Services</span>
+        </div>
+        <div class="sys-track"><div class="sys-fill" style="width:98%"></div></div>
+        <span class="sys-pct">98%</span>
+      </div>
+      <div class="sys-row">
+        <div class="sys-left">
+          <span class="sys-dot dot-green"></span>
+          <span class="sys-name">Database</span>
+        </div>
+        <div class="sys-track"><div class="sys-fill" style="width:100%"></div></div>
+        <span class="sys-pct">100%</span>
+      </div>
+      <div class="sys-row">
+        <div class="sys-left">
+          <span class="sys-dot dot-green"></span>
+          <span class="sys-name">Authentication</span>
+        </div>
+        <div class="sys-track"><div class="sys-fill" style="width:100%"></div></div>
+        <span class="sys-pct">100%</span>
+      </div>
+      <div class="sys-row">
+        <div class="sys-left">
+          <span class="sys-dot dot-amber"></span>
+          <span class="sys-name">File Storage</span>
+        </div>
+        <div class="sys-track"><div class="sys-fill sys-fill-amber" style="width:87%"></div></div>
+        <span class="sys-pct">87%</span>
+      </div>
+    </div>
+  </div>
+
+</div>
