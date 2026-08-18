@@ -20,7 +20,7 @@
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="modal-form" autocomplete="off">
 
-      <!-- Department Name -->
+      
       <div class="form-field" [class.field-error]="isInvalid('name')">
         <label class="form-label">Department Name <span class="required">*</span></label>
         <div class="input-wrap">
@@ -40,7 +40,7 @@
         }
       </div>
 
-      <!-- Location -->
+      
       <div class="form-field" [class.field-error]="isInvalid('location')">
         <label class="form-label">Location <span class="required">*</span></label>
         <div class="input-wrap">

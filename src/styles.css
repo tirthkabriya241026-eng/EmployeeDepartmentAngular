@@ -1,9 +1,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
-/* ── DESIGN TOKENS ─────────────────────────────────────────── */
+
 :root {
-  /* ── Backgrounds ── */
+  
   --bg-root:      #f1f5f9;
   --bg-canvas:    #f8fafc;
   --bg-white:     #ffffff;
@@ -13,7 +13,7 @@
   --bg-muted:     #f1f5f9;
   --bg-subtle:    #e2e8f0;
 
-  /* ── Primary — Indigo ── */
+  
   --primary:        #4f46e5;
   --primary-hover:  #4338ca;
   --primary-light:  #eef2ff;
@@ -21,40 +21,40 @@
   --primary-border: rgba(79,70,229,0.25);
   --primary-shadow: 0 4px 14px rgba(79,70,229,0.28);
 
-  /* ── Success — Emerald ── */
+  
   --success:        #059669;
   --success-light:  #ecfdf5;
   --success-border: rgba(5,150,105,0.25);
 
-  /* ── Warning — Amber ── */
+  
   --warning:        #d97706;
   --warning-light:  #fffbeb;
   --warning-border: rgba(217,119,6,0.25);
 
-  /* ── Danger — Rose ── */
+  
   --danger:         #e11d48;
   --danger-light:   #fff1f2;
   --danger-border:  rgba(225,29,72,0.25);
 
-  /* ── Sky — Info ── */
+  
   --info:           #0284c7;
   --info-light:     #f0f9ff;
   --info-border:    rgba(2,132,199,0.25);
 
-  /* ── Text ── */
+  
   --text-primary:   #0f172a;
   --text-secondary: #334155;
   --text-muted:     #64748b;
   --text-subtle:    #94a3b8;
   --text-disabled:  #cbd5e1;
 
-  /* ── Borders ── */
+  
   --border-light:   #f1f5f9;
   --border-default: #e2e8f0;
   --border-medium:  #cbd5e1;
   --border-strong:  #94a3b8;
 
-  /* ── Shadows ── */
+  
   --shadow-xs:  0 1px 2px rgba(15,23,42,0.04);
   --shadow-sm:  0 1px 3px rgba(15,23,42,0.06), 0 1px 2px rgba(15,23,42,0.04);
   --shadow-md:  0 4px 6px rgba(15,23,42,0.05), 0 2px 4px rgba(15,23,42,0.04);
@@ -62,11 +62,11 @@
   --shadow-xl:  0 20px 25px rgba(15,23,42,0.08), 0 8px 10px rgba(15,23,42,0.04);
   --shadow-2xl: 0 40px 60px rgba(15,23,42,0.12), 0 16px 24px rgba(15,23,42,0.06);
 
-  /* ── Layout ── */
+  
   --sidebar-w: clamp(220px, 18vw, 256px);
   --topbar-h:  clamp(50px, 5vh, 60px);
 
-  /* ── Radius ── */
+  
   --r-xs:   4px;
   --r-sm:   6px;
   --r-md:   10px;
@@ -75,32 +75,32 @@
   --r-2xl:  24px;
   --r-full: 9999px;
 
-  /* ── Transitions ── */
+  
   --t-fast:   120ms cubic-bezier(0.4,0,0.2,1);
   --t-base:   200ms cubic-bezier(0.4,0,0.2,1);
   --t-slow:   350ms cubic-bezier(0.4,0,0.2,1);
   --t-spring: 450ms cubic-bezier(0.34,1.56,0.64,1);
 
-  /* ── Typography ── */
+  
   --font:         'Inter', system-ui, -apple-system, sans-serif;
   --font-display: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
 
-  /* ── Global Design System Variables (Requested) ── */
+  
   --primary-color: var(--primary);
   --background-color: var(--bg-root);
   --card-radius: var(--r-xl);
   --spacing-unit: 1rem;
   --font-scale: 1;
 
-  /* Responsive Typography Base */
-  --text-base-size: clamp(0.875rem, 0.8vw + 0.5rem, 1rem); /* 14px to 16px */
+  
+  --text-base-size: clamp(0.875rem, 0.8vw + 0.5rem, 1rem); 
   --text-h1: clamp(1.5rem, 2vw + 1rem, 2.5rem);
   --text-h2: clamp(1.25rem, 1.5vw + 0.875rem, 1.75rem);
   --text-h3: clamp(1.125rem, 1vw + 0.875rem, 1.375rem);
   --text-small: clamp(0.75rem, 0.5vw + 0.625rem, 0.875rem);
 }
 
-/* ── RESET ──────────────────────────────────────────────────── */
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
@@ -126,7 +126,7 @@ app-root {
   overflow: hidden;
 }
 
-/* ── SCROLLBAR ──────────────────────────────────────────────── */
+
 ::-webkit-scrollbar          { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track    { background: var(--bg-muted); }
 ::-webkit-scrollbar-thumb    { background: var(--border-medium); border-radius: 99px; }
@@ -134,7 +134,7 @@ app-root {
 
 ::selection { background: rgba(79,70,229,0.15); color: var(--primary); }
 
-/* ── PAGE HEADER ────────────────────────────────────────────── */
+
 .page-header {
   display: flex;
   align-items: center;
@@ -163,7 +163,7 @@ app-root {
   margin: 0;
 }
 
-/* ── ADD BUTTON ─────────────────────────────────────────────── */
+
 .btn-add {
   display: inline-flex;
   align-items: center;
@@ -192,14 +192,14 @@ app-root {
 
 .btn-add:active { transform: translateY(0); }
 
-/* ── HEADER ACTIONS (Export + Add side-by-side) ─────────────── */
+
 .header-actions {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-/* ── TABLE CARD ─────────────────────────────────────────────── */
+
 .table-card {
   background: var(--bg-white);
   border-radius: var(--card-radius);
@@ -209,7 +209,7 @@ app-root {
   box-shadow: var(--shadow-sm);
 }
 
-/* ── TABLE TOOLBAR ──────────────────────────────────────────── */
+
 .table-toolbar {
   display: flex;
   align-items: center;
@@ -271,7 +271,7 @@ app-root {
   letter-spacing: 0.2px;
 }
 
-/* ── DATA TABLE ─────────────────────────────────────────────── */
+
 .table-wrapper { overflow-x: auto; }
 
 .data-table {
@@ -312,7 +312,7 @@ app-root {
 
 .data-table tbody tr:last-child td { border-bottom: none; }
 
-/* ── ACTION BUTTONS ─────────────────────────────────────────── */
+
 .action-btns { display: flex; align-items: center; gap: 6px; }
 
 .btn-edit, .btn-delete {
@@ -360,7 +360,7 @@ app-root {
 
 .btn-edit:active, .btn-delete:active { transform: translateY(0); }
 
-/* ── EMPTY STATE ────────────────────────────────────────────── */
+
 .empty-row td { padding: 0; border: none; }
 
 .empty-state {
@@ -402,7 +402,7 @@ app-root {
   line-height: 1.6;
 }
 
-/* ── SKELETON ───────────────────────────────────────────────── */
+
 .skeleton {
   background: linear-gradient(90deg,
     var(--border-light) 25%,
@@ -415,7 +415,7 @@ app-root {
   display: inline-block;
 }
 
-/* ── PAGINATION ─────────────────────────────────────────────── */
+
 .pagination {
   display: flex;
   align-items: center;
@@ -464,7 +464,7 @@ app-root {
   font-size: 0.875rem;
 }
 
-/* ── KEYFRAMES ──────────────────────────────────────────────── */
+
 @keyframes slideUp {
   from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -509,7 +509,7 @@ app-root {
   to   { transform: scale(1); }
 }
 
-/* Legacy animation aliases */
+
 @keyframes cyberFadeUp {
   from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: translateY(0); }

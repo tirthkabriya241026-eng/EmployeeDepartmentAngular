@@ -9,7 +9,7 @@
   color: #0f172a;
 }
 
-/* ── Root Grid Layout (Fixed 100vh Height) ── */
+
 .login-root {
   display: grid;
   grid-template-columns: 54% 1fr;
@@ -21,7 +21,7 @@
   position: relative;
 }
 
-/* ── Background Mesh ── */
+
 .bg-layer {
   position: fixed;
   inset: 0;
@@ -58,9 +58,7 @@
   background-size: 36px 36px;
 }
 
-/* ════════════════════════════════════════════════════════════════
-   LEFT PANEL — Scaled Compact Branding & Dashboard Preview
-   ════════════════════════════════════════════════════════════════ */
+
 .left-panel {
   position: relative;
   z-index: 1;
@@ -83,7 +81,7 @@
   overflow: hidden;
 }
 
-/* Brand Header */
+
 .lp-brand {
   display: flex;
   align-items: center;
@@ -118,7 +116,7 @@
   font-weight: 500;
 }
 
-/* Headline */
+
 .lp-headline {
   flex-shrink: 0;
 }
@@ -144,7 +142,7 @@
   margin: 0;
 }
 
-/* Compact Feature List */
+
 .lp-features {
   display: flex;
   flex-direction: column;
@@ -180,7 +178,7 @@
 .lp-feature-text strong { color: rgba(255, 255, 255, 0.95); font-weight: 600; }
 .lp-feature-text span { color: rgba(255, 255, 255, 0.5); }
 
-/* Dashboard Preview Widget — Auto-Scaling Container */
+
 .dash-preview {
   background: rgba(15, 23, 42, 0.65);
   backdrop-filter: blur(20px);
@@ -216,7 +214,7 @@
   border-radius: 4px;
 }
 
-/* Stat Cards */
+
 .dash-metrics-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -238,7 +236,7 @@
 .m-trend.positive { color: #34d399; }
 .m-trend.negative { color: #f87171; }
 
-/* Line Graph */
+
 .dash-graph-box {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 9px;
@@ -259,7 +257,7 @@
   padding: 0 2px;
 }
 
-/* Bottom Split */
+
 .dash-bottom-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -277,7 +275,7 @@
 }
 .widget-title { font-size: 0.625rem; color: rgba(255, 255, 255, 0.6); font-weight: 600; }
 
-/* Donut */
+
 .donut-wrap {
   display: flex;
   align-items: center;
@@ -321,7 +319,7 @@
 .dot.hr  { background: #8b5cf6; }
 .dot.fin { background: #10b981; }
 
-/* Activity */
+
 .activity-list {
   display: flex;
   flex-direction: column;
@@ -353,9 +351,7 @@
 .act-time { font-size: 0.45rem; color: rgba(255, 255, 255, 0.35); flex-shrink: 0; }
 
 
-/* ════════════════════════════════════════════════════════════════
-   RIGHT PANEL — Compact Centered Login Form (Exact Fit)
-   ════════════════════════════════════════════════════════════════ */
+
 .right-panel {
   position: relative;
   z-index: 1;
@@ -379,7 +375,7 @@
   gap: clamp(8px, 1.4vh, 16px);
 }
 
-/* Floating Login Card */
+
 .login-card {
   width: 100%;
   background: #ffffff;
@@ -395,7 +391,7 @@
 }
 .login-card.card-loading { opacity: 0.7; pointer-events: none; }
 
-/* Card Header */
+
 .card-head {
   display: flex;
   flex-direction: column;
@@ -431,14 +427,14 @@
   font-weight: 400;
 }
 
-/* Card Form */
+
 .card-form {
   display: flex;
   flex-direction: column;
   gap: clamp(10px, 1.4vh, 14px);
 }
 
-/* Input Fields */
+
 .field {
   display: flex;
   flex-direction: column;
@@ -523,7 +519,7 @@
 .field__pw-toggle svg { width: 16px; height: 16px; }
 .field__pw-toggle:hover { color: #475569; }
 
-/* Remember Row */
+
 .remember-row {
   display: flex;
   align-items: center;
@@ -558,7 +554,7 @@
 .remember-me__label { font-size: 0.75rem; font-weight: 600; color: #334155; }
 .remember-sub { font-size: 0.7rem; color: #94a3b8; }
 
-/* Submit Button */
+
 .btn-submit {
   width: 100%;
   height: clamp(38px, 4.8vh, 44px);
@@ -593,7 +589,7 @@
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* Divider */
+
 .divider {
   display: flex;
   align-items: center;
@@ -610,7 +606,7 @@
 }
 .divider span { padding: 0 8px; }
 
-/* SSO Buttons */
+
 .sso-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -638,7 +634,7 @@
 }
 .sso-logo { width: 16px; height: 16px; }
 
-/* Create Account Footer Link */
+
 .card-footer-link {
   display: flex;
   align-items: center;
@@ -655,7 +651,7 @@
 }
 .link-register:hover { text-decoration: underline; color: #1d4ed8; }
 
-/* Global Bottom Footer */
+
 .global-footer {
   display: flex;
   align-items: center;
@@ -667,9 +663,7 @@
 .global-footer a:hover { color: #2563eb; }
 .footer-dot { color: #cbd5e1; }
 
-/* ════════════════════════════════════════════════════════════════
-   RESPONSIVE BREAKPOINTS
-   ════════════════════════════════════════════════════════════════ */
+
 @media (max-width: 1024px) {
   .login-root { grid-template-columns: 1fr; grid-template-rows: auto 1fr; overflow-y: auto; }
   .left-panel { height: auto; max-height: none; }

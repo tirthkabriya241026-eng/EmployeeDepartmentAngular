@@ -32,7 +32,7 @@ export class ResetPassword implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Read token from query parameter
+    
     this.route.queryParams.subscribe(params => {
       this.token = params['token'] || '';
       
@@ -44,11 +44,11 @@ export class ResetPassword implements OnInit {
   }
 
   onSubmit(): void {
-    // Clear previous messages
+    
     this.errorMessage = '';
     this.successMessage = '';
 
-    // Validate inputs
+    
     if (!this.newPassword || !this.confirmPassword) {
       this.errorMessage = 'Both password fields are required';
       return;
@@ -79,7 +79,7 @@ export class ResetPassword implements OnInit {
         this.newPassword = '';
         this.confirmPassword = '';
         
-        // Redirect to login 
+        
         setTimeout(() => {
           this.router.navigate(['/login']);
         }, 3000);
@@ -90,7 +90,7 @@ export class ResetPassword implements OnInit {
         if (error.status === 0) {
           this.errorMessage = 'Unable to connect to backend service. Please ensure the backend API server is running at https://localhost:7130.';
         } else if (error.status === 400) {
-          // Token expired or invalid
+          
           const errorMsg = typeof error.error === 'string' ? error.error : (error.error?.message || '');
           const lowerMsg = errorMsg.toLowerCase();
           
@@ -121,7 +121,7 @@ export class ResetPassword implements OnInit {
   }
 
   private isValidPassword(password: string): boolean {
-    // At least 8 characters, 1 uppercase, 1 lowercase, 1 number, 1 special character
+    
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).{8,}$/;
     return passwordRegex.test(password);
   }

@@ -146,7 +146,7 @@
   display: inline-block; flex-shrink: 0;
 }
 
-/* ── Dropdown loading skeleton ───────────────────────────────── */
+
 .skeleton-field {
   height: 56px;
   background: linear-gradient(90deg, var(--bg-muted, #f1f5f9) 25%, var(--border-default, #e2e8f0) 50%, var(--bg-muted, #f1f5f9) 75%);

@@ -16,7 +16,7 @@ export class ToastService {
   toasts = signal<Toast[]>([]);
 
   show(message: string, type: ToastType = 'info', duration = 3500): void {
-    // Deduplicate: don't show the same message+type if already visible
+    
     const already = this.toasts().some(t => t.message === message && t.type === type && !t.removing);
     if (already) return;
 

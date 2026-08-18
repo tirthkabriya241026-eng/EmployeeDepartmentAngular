@@ -16,7 +16,7 @@
       </button>
     </div>
 
-    <!-- Dropdown loading skeleton -->
+    
     @if (dropdownsLoading) {
       <div class="modal-form">
         <div class="skeleton-field"></div>
@@ -30,7 +30,7 @@
     @if (!dropdownsLoading) {
       <form [formGroup]="form" (ngSubmit)="onSubmit()" class="modal-form" autocomplete="off">
 
-        <!-- Name -->
+        
         <div class="form-field" [class.field-error]="isInvalid('name')">
           <label class="form-label">Full Name <span class="required">*</span></label>
           <div class="input-wrap">
@@ -48,7 +48,7 @@
           }
         </div>
 
-        <!-- Email -->
+        
         <div class="form-field" [class.field-error]="isInvalid('email')">
           <label class="form-label">Email Address <span class="required">*</span></label>
           <div class="input-wrap">
@@ -65,7 +65,7 @@
           }
         </div>
 
-        <!-- Salary -->
+        
         <div class="form-field" [class.field-error]="isInvalid('salary')">
           <label class="form-label">Salary (USD) <span class="required">*</span></label>
           <div class="input-wrap">
@@ -82,9 +82,8 @@
           }
         </div>
 
-        <!-- Department -->
-        <!-- [value]="dept.deptId.toString()" matches the form control string,
-             converted to Number at submit time. -->
+        
+        
         <div class="form-field" [class.field-error]="isInvalid('departmentId')">
           <label class="form-label">Department <span class="required">*</span></label>
           <div class="input-wrap">

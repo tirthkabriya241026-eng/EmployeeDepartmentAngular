@@ -1,10 +1,10 @@
-/* ── Wrapper — the positioning anchor for the dropdown ── */
+
 .export-wrap {
   position: relative;
   display: inline-flex;
 }
 
-/* ── Trigger button ── */
+
 .btn-export {
   display: inline-flex;
   align-items: center;
@@ -34,7 +34,7 @@
 
 .btn-export:disabled { opacity: 0.7; cursor: not-allowed; }
 
-/* ── Spinner ── */
+
 .export-spinner {
   width: 13px; height: 13px;
   border: 2px solid var(--border-default);
@@ -44,14 +44,7 @@
   flex-shrink: 0;
 }
 
-/* ── Dropdown ──
-   position:absolute so it is placed relative to .export-wrap.
-   .export-wrap sits inside .page-header which is a sibling of
-   .table-card — so overflow:hidden on .table-card never clips it.
-   overflow:visible is the default on .export-wrap, so nothing clips
-   the dropdown from above either.
-   z-index:200 clears the topbar (z-index:50) and sidebar (z-index:100).
-── */
+
 .export-dropdown {
   position: absolute;
   top: calc(100% + 6px);
@@ -66,7 +59,7 @@
   animation: slideUp 0.15s ease both;
 }
 
-/* ── Options ── */
+
 .export-option {
   display: flex;
   align-items: center;

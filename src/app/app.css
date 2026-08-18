@@ -6,7 +6,7 @@
   background: var(--bg-root);
 }
 
-/* ── SIDEBAR ────────────────────────────────────────────────── */
+
 .sidebar {
   width: var(--sidebar-w);
   min-width: var(--sidebar-w);
@@ -23,7 +23,7 @@
   box-shadow: var(--shadow-sm);
 }
 
-/* Subtle top accent line */
+
 .sidebar::before {
   content: '';
   position: absolute;
@@ -33,10 +33,10 @@
   z-index: 10;
 }
 
-/* Remove scan-line for light theme */
+
 .sidebar .scan-line { display: none; }
 
-/* ── BRAND ──────────────────────────────────────────────────── */
+
 .sidebar-brand {
   display: flex;
   align-items: center;
@@ -81,7 +81,7 @@
   text-transform: uppercase;
 }
 
-/* ── NAV ────────────────────────────────────────────────────── */
+
 .sidebar-nav {
   flex: 1;
   padding: 14px 10px;
@@ -134,7 +134,7 @@
   box-shadow: inset 3px 0 0 var(--primary);
 }
 
-/* ── SIDEBAR FOOTER ─────────────────────────────────────────── */
+
 .sidebar-footer {
   padding: 10px;
   border-top: 1px solid var(--border-light);
@@ -179,7 +179,7 @@
 
 .user-role { font-size: 0.6875rem; color: var(--text-muted); white-space: nowrap; }
 
-/* ── MAIN AREA ──────────────────────────────────────────────── */
+
 .main-area {
   flex: 1;
   display: flex;
@@ -188,7 +188,7 @@
   min-width: 0;
 }
 
-/* ── TOPBAR ─────────────────────────────────────────────────── */
+
 .topbar {
   height: var(--topbar-h);
   min-height: var(--topbar-h);
@@ -326,7 +326,7 @@
 
 .logout-btn:active { transform: translateY(0); }
 
-/* ── PAGE CONTENT ───────────────────────────────────────────── */
+
 .page-content {
   flex: 1;
   overflow-y: auto;
@@ -337,7 +337,7 @@
 
 .page-navigating { opacity: 0.5; }
 
-/* ── RESPONSIVE ─────────────────────────────────────────────── */
+
 .hamburger-btn { display: none; }
 
 @media (max-width: 1024px) {

@@ -1,10 +1,10 @@
 <div class="shell">
 
-  <!-- ===== GLOBAL OVERLAYS ===== -->
+  
   <app-toast></app-toast>
   <app-confirm-dialog></app-confirm-dialog>
 
-  <!-- ===== SIDEBAR ===== -->
+  
   @if (!isLoginPage) {
     <aside class="sidebar" [class.open]="isSidebarOpen">
       <div class="scan-line"></div>
@@ -68,10 +68,10 @@
     </aside>
   }
 
-  <!-- ===== MAIN AREA ===== -->
+  
   <div class="main-area">
 
-    <!-- TOP NAVBAR -->
+    
     @if (!isLoginPage) {
       <header class="topbar">
 
@@ -118,7 +118,7 @@
       </header>
     }
 
-    <!-- PAGE CONTENT -->
+    
     <main class="page-content" [class.page-navigating]="isNavigating">
       <router-outlet></router-outlet>
     </main>

@@ -7,7 +7,7 @@
 
 <div class="table-card">
 
-  <!-- Toolbar -->
+  
   <div class="table-toolbar">
     <div class="search-box">
       <svg viewBox="0 0 20 20" fill="currentColor">
@@ -28,7 +28,7 @@
     </div>
   </div>
 
-  <!-- Loading -->
+  
   @if (loading()) {
     <div class="skeleton-wrap">
       @for (i of [1,2,3]; track i) {
@@ -43,7 +43,7 @@
     </div>
   }
 
-  <!-- Table -->
+  
   @if (!loading()) {
     <div class="table-wrapper">
       <table class="data-table">
@@ -106,7 +106,7 @@
       </table>
     </div>
 
-    <!-- Pagination -->
+    
     @if (totalPages() > 1) {
       <div class="pagination">
         <button class="page-btn page-nav" (click)="goToPage(currentPage() - 1)" [disabled]="currentPage() === 1">

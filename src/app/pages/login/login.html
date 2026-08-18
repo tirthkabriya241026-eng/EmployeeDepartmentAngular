@@ -1,5 +1,5 @@
 <div class="login-root">
-  <!-- Background gradient mesh layer -->
+  
   <div class="bg-layer" aria-hidden="true">
     <div class="bg-orb bg-orb-1"></div>
     <div class="bg-orb bg-orb-2"></div>
@@ -10,7 +10,7 @@
   <aside class="left-panel">
     <div class="lp-inner">
 
-      <!-- Brand Header -->
+      
       <div class="lp-brand">
         <div class="lp-logo-badge">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -26,7 +26,7 @@
         </div>
       </div>
 
-      <!-- Main Headline & Subtitle -->
+      
       <div class="lp-headline">
         <h1 class="lp-headline-title">
           The smarter way<br>
@@ -37,7 +37,7 @@
         </p>
       </div>
 
-      <!-- Feature Bullet Items -->
+      
       <div class="lp-features">
         <div class="lp-feature-item">
           <div class="lp-feature-icon icon-purple">
@@ -76,14 +76,14 @@
         </div>
       </div>
 
-      <!-- Live Interactive Dashboard Overview Card -->
+      
       <div class="dash-preview">
         <div class="dash-preview-header">
           <span class="dash-title">Dashboard Overview</span>
           <span class="dash-period">Last 6 months</span>
         </div>
 
-        <!-- 4 Top Metric Cards -->
+        
         <div class="dash-metrics-grid">
           <div class="metric-card">
             <span class="m-label">Total Employees</span>
@@ -107,7 +107,7 @@
           </div>
         </div>
 
-        <!-- Line Graph Area -->
+        
         <div class="dash-graph-box">
           <div class="graph-title">Headcount Over Time</div>
           <svg class="graph-svg" viewBox="0 0 400 120" preserveAspectRatio="none">
@@ -126,9 +126,9 @@
           </div>
         </div>
 
-        <!-- Bottom Split: Donut Distribution & Recent Activity -->
+        
         <div class="dash-bottom-grid">
-          <!-- Donut Chart Widget -->
+          
           <div class="dash-widget">
             <div class="widget-title">Department Distribution</div>
             <div class="donut-wrap">
@@ -146,7 +146,7 @@
             </div>
           </div>
 
-          <!-- Activity List Widget -->
+          
           <div class="dash-widget">
             <div class="widget-title">Recent Activity</div>
             <div class="activity-list">
@@ -180,7 +180,7 @@
 
       <section class="login-card" [class.card-loading]="isLoading">
 
-        <!-- Top Avatar Logo -->
+        
         <div class="card-head">
           <div class="card-icon-badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -194,10 +194,10 @@
           <p class="card-subtitle">Sign in to continue to your workspace</p>
         </div>
 
-        <!-- Login Form -->
+        
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="card-form" novalidate>
 
-          <!-- Email Input -->
+          
           <div class="field" [class.field--error]="emailInvalid" [class.field--valid]="emailValid">
             <label for="login-email" class="field__label">Email address</label>
             <div class="field__wrap">
@@ -217,7 +217,7 @@
             }
           </div>
 
-          <!-- Password Input -->
+          
           <div class="field" [class.field--error]="passwordInvalid">
             <div class="field__label-row">
               <label for="login-password" class="field__label">Password</label>
@@ -249,7 +249,7 @@
             }
           </div>
 
-          <!-- Remember Me Checkbox -->
+          
           <div class="remember-row">
             <label class="remember-me" for="remember-check">
               <input id="remember-check" type="checkbox" class="remember-me__input" formControlName="rememberMe" />
@@ -263,7 +263,7 @@
             <span class="remember-sub">Keep me signed in for 30 days</span>
           </div>
 
-          <!-- Submit Button -->
+          
           <button type="submit" class="btn-submit" [disabled]="isLoading">
             @if (isLoading) {
               <span class="btn-spinner"></span>
@@ -273,12 +273,12 @@
             }
           </button>
 
-          <!-- Divider -->
+          
           <div class="divider">
             <span>or continue with</span>
           </div>
 
-          <!-- SSO Buttons -->
+          
           <div class="sso-row">
             <button type="button" class="btn-sso" (click)="onSSOClick('google')">
               <svg class="sso-logo" viewBox="0 0 24 24">
@@ -301,7 +301,7 @@
           </div>
         </form>
 
-        <!-- Create Account Link -->
+        
         <div class="card-footer-link">
           <span>Don't have an account?</span>
           <a routerLink="/register" class="link-register">Create account</a>
@@ -309,7 +309,7 @@
 
       </section>
 
-      <!-- Bottom Global Footer Text -->
+      
       <footer class="global-footer">
         <span>© 2026 HRManage. All rights reserved.</span>
         <span class="footer-dot">•</span>

@@ -26,7 +26,7 @@ export class Employees implements OnInit {
   private confirm = inject(ConfirmDialogService);
   private toast   = inject(ToastService);
 
-  // ── State ──────────────────────────────────────────────────
+  
   employees        = signal<Employee[]>([]);
   loading          = signal(true);
   searchTerm       = signal('');
@@ -36,12 +36,12 @@ export class Employees implements OnInit {
   showForm         = signal(false);
   selectedEmployee = signal<Employee | null>(null);
 
-  // Pagination
+  
   pageSizeOptions = [10, 25, 50];
   pageSize        = signal(10);
   currentPage     = signal(1);
 
-  // ── Derived ────────────────────────────────────────────────
+  
   filtered = computed(() => {
     const term   = this.searchTerm().toLowerCase().trim();
     const status = this.statusFilter();
@@ -96,7 +96,7 @@ export class Employees implements OnInit {
     return pages;
   });
 
-  // ── Lifecycle ──────────────────────────────────────────────
+  
   ngOnInit(): void { this.loadEmployees(); }
 
   loadEmployees(): void {
@@ -107,7 +107,7 @@ export class Employees implements OnInit {
     });
   }
 
-  // ── Filters / Sort / Pagination ────────────────────────────
+  
   onSearch(term: string): void { this.searchTerm.set(term); this.currentPage.set(1); }
   setStatusFilter(f: StatusFilter): void { this.statusFilter.set(f); this.currentPage.set(1); }
   onPageSizeChange(size: number): void { this.pageSize.set(Number(size)); this.currentPage.set(1); }
@@ -132,7 +132,7 @@ export class Employees implements OnInit {
     return this.sortDir();
   }
 
-  // ── CRUD ───────────────────────────────────────────────────
+  
   openAdd(): void  { this.selectedEmployee.set(null); this.showForm.set(true); }
   openEdit(emp: Employee): void { this.selectedEmployee.set(emp); this.showForm.set(true); }
   closeForm(): void { this.showForm.set(false); this.selectedEmployee.set(null); }
@@ -151,7 +151,7 @@ export class Employees implements OnInit {
     });
     if (!ok) return;
 
-    // Use empId — the real backend primary key
+    
     this.empSvc.softDelete(emp.empId).subscribe({
       next: () => { this.toast.success(`${emp.name} has been deleted.`); this.loadEmployees(); },
       error: (err: Error) => this.toast.error(err.message)
@@ -171,14 +171,14 @@ export class Employees implements OnInit {
     });
     if (!ok) return;
 
-    // Use empId — the real backend primary key
+    
     this.empSvc.toggleStatus(emp.empId, newStatus).subscribe({
       next: () => {
         this.toast.success(`${emp.name} is now ${newStatus ? 'active' : 'inactive'}.`);
         this.loadEmployees();
       },
       error: () => {
-        // Optimistic fallback
+        
         this.employees.update(list =>
           list.map(e => e.empId === emp.empId ? { ...e, isActive: newStatus } : e)
         );

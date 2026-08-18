@@ -21,7 +21,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
 
   login(loginData: LoginRequest): Observable<LoginResponse> {
-    // AuthController uses [Route("api/[controller]")] — needs the /api prefix
+    
     return this.http.post<LoginResponse>(`${this.apiUrl}/api/Auth/Login`, loginData);
   }
 
@@ -45,7 +45,7 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  /** Decode the JWT payload — returns null if token is missing/malformed. */
+  
   private getPayload(): any | null {
     const token = localStorage.getItem('token');
     if (!token) return null;
@@ -56,27 +56,24 @@ export class AuthService {
     }
   }
 
-  /** True if the token exists and is not expired. */
+  
   isLoggedIn(): boolean {
     const payload = this.getPayload();
     if (!payload) return false;
     return payload.exp * 1000 > Date.now();
   }
 
-  /**
-   * Returns the role stored in the JWT.
-   * Checks both ClaimTypes.Role (full URI) and the short "role" key.
-   */
+  
   getRole(): string {
     const payload = this.getPayload();
     if (!payload) return '';
-    // ASP.NET Core serialises ClaimTypes.Role as:
-    // "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
+    
+    
     const roleKey = 'http://schemas.microsoft.com/ws/2008/06/identity/claims/role';
     return payload[roleKey] ?? payload['role'] ?? payload['Role'] ?? '';
   }
 
-  /** True only when the logged-in user has the Admin role. */
+  
   isAdmin(): boolean {
     return this.getRole() === 'Admin';
   }

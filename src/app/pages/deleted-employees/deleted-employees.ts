@@ -59,18 +59,18 @@ export class DeletedEmployees implements OnInit {
 
   load(): void {
     this.loading.set(true);
-    // Use the dedicated /deleted endpoint. If it fails (backend doesn't expose it),
-    // fall back to getAll() and filter client-side.
+    
+    
     this.empSvc.getDeleted().subscribe({
       next: data => {
-        // getDeleted() already returns only deleted employees from the /deleted endpoint.
-        // If the response is empty (backend returned nothing or endpoint doesn't exist),
-        // the empty-state UI will be shown.
+        
+        
+        
         this.employees.set(data);
         this.loading.set(false);
       },
       error: () => {
-        // Fallback: load all and filter for deleted
+        
         this.empSvc.getAll().subscribe({
           next: all => {
             this.employees.set(all.filter(e => e.isDeleted));

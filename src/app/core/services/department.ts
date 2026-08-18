@@ -25,59 +25,59 @@ export class DepartmentService {
     return [];
   }
 
-  /** GET /api/Department?pageSize=1000&pageNumber=1 */
+  
   getAll(): Observable<Department[]> {
     return this.http.get<any>(`${this.url}?pageSize=1000&pageNumber=1`).pipe(
-      map(r => this.unwrap(r) as Department[]),
+      map((r: any) => this.unwrap(r) as Department[]),
       catchError(this.handleError)
     );
   }
 
-  /** GET /api/Department/{id} */
+  
   getById(id: number): Observable<Department> {
     return this.http.get<any>(`${this.url}/${id}`).pipe(
-      map(r => (r?.data ?? r) as Department),
+      map((r: any) => (r?.data ?? r) as Department),
       catchError(this.handleError)
     );
   }
 
-  /** Lightweight dropdown loader — active, non-deleted departments only. */
+  
   getForDropdown(): Observable<DepartmentOption[]> {
     return this.http.get<any>(`${this.url}?pageSize=1000&pageNumber=1`).pipe(
-      map(r => {
+      map((r: any) => {
         const list = this.unwrap(r) as Department[];
         return list
-          .filter(d => !d.isDeleted)
-          .map(d => ({ deptId: d.deptId, deptName: d.deptName }));
+          .filter((d: Department) => !d.isDeleted)
+          .map((d: Department) => ({ deptId: d.deptId, deptName: d.deptName }));
       }),
       catchError(() => of([] as DepartmentOption[]))
     );
   }
 
-  /** POST /api/Department */
+  
   create(data: DepartmentRequest): Observable<Department> {
     return this.http.post<any>(this.url, data, { headers: this.jsonHeaders }).pipe(
-      map(r => (r?.data ?? r) as Department),
+      map((r: any) => (r?.data ?? r) as Department),
       catchError(this.handleError)
     );
   }
 
-  /** PUT /api/Department/{id} */
+  
   update(id: number, data: DepartmentRequest): Observable<Department> {
     return this.http.put<any>(`${this.url}/${id}`, data, { headers: this.jsonHeaders }).pipe(
-      map(r => (r?.data ?? r) as Department),
+      map((r: any) => (r?.data ?? r) as Department),
       catchError(this.handleError)
     );
   }
 
-  /** DELETE /api/Department/{id} */
+  
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.url}/${id}`).pipe(
       catchError(this.handleError)
     );
   }
 
-  /** PATCH /api/Department/{id}/status */
+  
   toggleStatus(id: number, isActive: boolean): Observable<void> {
     return this.http.patch<any>(
       `${this.url}/${id}/status`,

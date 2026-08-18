@@ -17,7 +17,7 @@ export class Dashboard implements OnInit {
   greeting   = 'Good morning';
   dateLabel  = '';
 
-  // Stats
+  
   totalEmployees    = 0;
   activeEmployees   = 0;
   inactiveEmployees = 0;

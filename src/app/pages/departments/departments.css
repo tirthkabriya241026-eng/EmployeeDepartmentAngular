@@ -14,7 +14,7 @@
 
 .page-subtitle { font-size: 0.8125rem; color: var(--text-muted); margin: 0; }
 
-/* Table card */
+
 .table-card {
   background: var(--bg-white);
   border: 1px solid var(--border-default);
@@ -24,7 +24,7 @@
   box-shadow: var(--shadow-sm);
 }
 
-/* Toolbar */
+
 .table-toolbar {
   padding: 8px 16px;
   border-bottom: 1px solid var(--border-light);
@@ -56,7 +56,7 @@
 .toolbar-right { display: flex; align-items: center; gap: 8px; }
 .record-count { font-size: 0.6875rem; color: var(--text-muted); font-weight: 600; background: var(--bg-muted); border: 1px solid var(--border-default); padding: 4px 12px; border-radius: var(--r-full); }
 
-/* Table */
+
 .table-wrapper { overflow-x: auto; }
 .data-table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; }
 .data-table thead tr { background: var(--bg-canvas); border-bottom: 1.5px solid var(--border-default); }
@@ -66,10 +66,10 @@
 .data-table tbody tr:hover:not(.empty-row) { background: #fafbff; }
 .data-table tbody tr:last-child td { border-bottom: none; }
 
-/* Row number */
+
 .row-num { color: var(--text-subtle); font-size: 0.75rem; font-weight: 600; width: 36px; }
 
-/* Department cell — THE FIX */
+
 .dept-cell { display: flex; align-items: center; gap: 10px; min-width: 0; }
 
 .dept-icon {
@@ -85,7 +85,7 @@
 
 .dept-icon svg { width: 15px; height: 15px; fill: var(--primary); }
 
-/* KEY FIX: explicit color reset so no gradient inheritance */
+
 .dept-name {
   font-weight: 600;
   font-size: 0.875rem;
@@ -98,12 +98,12 @@
   text-overflow: ellipsis;
 }
 
-/* Location */
+
 .cell-muted { color: var(--text-muted) !important; -webkit-text-fill-color: var(--text-muted) !important; }
 .location-cell { display: flex; align-items: center; gap: 5px; }
 .location-icon { width: 13px; height: 13px; fill: var(--text-subtle); flex-shrink: 0; }
 
-/* Employee count */
+
 .emp-count {
   display: inline-flex;
   align-items: center;
@@ -119,7 +119,7 @@
   font-weight: 700;
 }
 
-/* Action buttons */
+
 .action-btns { display: flex; align-items: center; gap: 6px; }
 
 .btn-edit, .btn-delete {
@@ -144,7 +144,7 @@
 .btn-delete:hover { background: #ffe4e6; border-color: rgba(225,29,72,0.4); transform: translateY(-1px); box-shadow: 0 2px 8px rgba(225,29,72,0.15); }
 .btn-edit:active, .btn-delete:active { transform: translateY(0); }
 
-/* Empty state */
+
 .empty-row td { padding: 0; border: none; }
 .empty-state { display: flex; flex-direction: column; align-items: center; padding: 60px 24px; gap: 10px; text-align: center; }
 .empty-state-icon { width: 60px; height: 60px; background: var(--primary-light); border: 2px solid var(--primary-border); border-radius: var(--r-xl); display: flex; align-items: center; justify-content: center; margin-bottom: 6px; animation: floatIdle 3s ease-in-out infinite; }
@@ -152,12 +152,12 @@
 .empty-state p { font-family: var(--font-display); font-size: clamp(0.9375rem, 1vw + 0.6rem, 1.125rem); font-weight: 700; color: var(--text-primary); margin: 0; }
 .empty-state span { font-size: 0.8125rem; color: var(--text-muted); max-width: 280px; line-height: 1.6; }
 
-/* Skeleton */
+
 .skeleton-wrap { padding: 4px 0; }
 .skeleton-row { display: flex; align-items: center; gap: 20px; padding: 13px 20px; border-bottom: 1px solid var(--border-light); }
 .skeleton-row:last-child { border-bottom: none; }
 
-/* Pagination */
+
 .pagination { display: flex; align-items: center; justify-content: center; gap: 4px; padding: 14px 20px; border-top: 1px solid var(--border-light); }
 .page-btn { min-width: 34px; height: 34px; padding: 0 8px; background: var(--bg-white); border: 1.5px solid var(--border-default); border-radius: var(--r-sm); color: var(--text-muted); font-size: 0.8125rem; font-family: var(--font); font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all var(--t-fast); }
 .page-btn:hover:not(:disabled) { background: var(--primary-light); border-color: var(--primary-border); color: var(--primary); }
@@ -166,7 +166,7 @@
 .page-btn svg { width: 14px; height: 14px; fill: currentColor; }
 .page-ellipsis { color: var(--text-subtle); padding: 0 4px; font-size: 0.875rem; }
 
-/* ── Sortable headers ───────────────────────────────────── */
+
 .sortable {
   cursor: pointer;
   user-select: none;
@@ -174,7 +174,7 @@
 .sortable:hover { color: var(--primary); }
 .sort-icon { margin-left: 4px; font-size: 0.6875rem; opacity: 0.7; }
 
-/* ── Filter tabs (All / Active / Inactive) ──────────────── */
+
 .filter-tabs {
   display: flex;
   align-items: center;
@@ -228,25 +228,25 @@
   line-height: 1;
 }
 
-/* Default active tab — indigo */
+
 .filter-tab.active .filter-count {
   background: var(--primary);
   color: #fff;
 }
 
-/* Active tab — green */
+
 .filter-tab-active.active .filter-count {
   background: var(--success);
   color: #fff;
 }
 
-/* Inactive tab — amber */
+
 .filter-tab-inactive.active .filter-count {
   background: var(--warning);
   color: #fff;
 }
 
-/* ── Page-size select ───────────────────────────────────── */
+
 .page-size-select {
   padding: 5px 8px;
   border: 1.5px solid var(--border-default);
@@ -262,7 +262,7 @@
 }
 .page-size-select:focus { border-color: var(--primary); }
 
-/* ── Status toggle button ───────────────────────────────── */
+
 .status-toggle {
   display: inline-flex;
   align-items: center;
@@ -304,17 +304,17 @@
 .status-toggle:hover { transform: translateY(-1px); box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
 .status-toggle:active { transform: translateY(0); }
 
-/* ── Inactive row tint ──────────────────────────────────── */
+
 .row-inactive td { opacity: 0.65; }
 
-/* ── Inactive dept icon ─────────────────────────────────── */
+
 .dept-icon-inactive {
   background: var(--bg-muted) !important;
   border-color: var(--border-default) !important;
 }
 .dept-icon-inactive svg { fill: var(--text-subtle) !important; }
 
-/* ── Pagination bar (with "Showing X–Y of Z") ───────────── */
+
 .pagination-bar {
   display: flex;
   align-items: center;
@@ -329,7 +329,7 @@
   font-weight: 500;
 }
 
-/* Override the old centred .pagination when inside .pagination-bar */
+
 .pagination-bar .pagination {
   padding: 0;
   border-top: none;

@@ -49,12 +49,12 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
 
   get isEdit(): boolean { return !!this.employee; }
 
-  // ── Lifecycle ──────────────────────────────────────────────
+  
 
   ngOnInit(): void {
     this.buildForm();
 
-    // Exclude the employee being edited from the manager list
+    
     const excludeId = this.isEdit ? this.employee!.empId : undefined;
 
     forkJoin({
@@ -99,7 +99,7 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  // ── Form ──────────────────────────────────────────────────
+  
 
   private buildForm(): void {
     this.form = this.fb.group({
@@ -118,7 +118,7 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
     return c.invalid && (c.dirty || c.touched);
   }
 
-  // ── Submit ────────────────────────────────────────────────
+  
 
   onSubmit(): void {
     if (this.form.invalid) { this.form.markAllAsTouched(); this.cdr.markForCheck(); return; }

@@ -16,11 +16,11 @@ export const routes: Routes = [
   { path: 'login',          component: Login,          canActivate: [loginGuard] },
   { path: 'register',       component: Register,       canActivate: [loginGuard] },
   { path: 'forgot-password', component: ForgotPassword, canActivate: [loginGuard] },
-  { path: 'reset-password', component: ResetPassword },  // no guard — accessible via email link
+  { path: 'reset-password', component: ResetPassword },  
   { path: 'dashboard',      component: Dashboard,      canActivate: [authGuard]  },
   { path: 'employees',      component: Employees,      canActivate: [authGuard]  },
   { path: 'departments',    component: Departments,    canActivate: [authGuard]  },
   { path: 'deleted-employees', component: DeletedEmployees, canActivate: [authGuard] },
-  { path: 'change-password', component: ChangePassword },   // no guard — handles both modes internally
+  { path: 'change-password', component: ChangePassword },   
   { path: '**', redirectTo: 'login' }
 ];

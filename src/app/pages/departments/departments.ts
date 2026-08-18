@@ -26,7 +26,7 @@ export class Departments implements OnInit {
   private confirm = inject(ConfirmDialogService);
   private toast   = inject(ToastService);
 
-  // ── State ──────────────────────────────────────────────────
+  
   departments        = signal<Department[]>([]);
   loading            = signal(true);
   searchTerm         = signal('');
@@ -36,12 +36,12 @@ export class Departments implements OnInit {
   showForm           = signal(false);
   selectedDepartment = signal<Department | null>(null);
 
-  // Pagination
+  
   pageSizeOptions = [10, 25, 50];
   pageSize        = signal(10);
   currentPage     = signal(1);
 
-  // ── Derived ────────────────────────────────────────────────
+  
   filtered = computed(() => {
     const term   = this.searchTerm().toLowerCase().trim();
     const status = this.statusFilter();
@@ -92,7 +92,7 @@ export class Departments implements OnInit {
     return pages;
   });
 
-  // ── Lifecycle ──────────────────────────────────────────────
+  
   ngOnInit(): void { this.loadDepartments(); }
 
   loadDepartments(): void {
@@ -103,7 +103,7 @@ export class Departments implements OnInit {
     });
   }
 
-  // ── Filters / Sort / Pagination ────────────────────────────
+  
   onSearch(term: string): void { this.searchTerm.set(term); this.currentPage.set(1); }
   setStatusFilter(f: StatusFilter): void { this.statusFilter.set(f); this.currentPage.set(1); }
   onPageSizeChange(size: number): void { this.pageSize.set(Number(size)); this.currentPage.set(1); }
@@ -128,7 +128,7 @@ export class Departments implements OnInit {
     return this.sortDir();
   }
 
-  // ── CRUD ───────────────────────────────────────────────────
+  
   openAdd(): void  { this.selectedDepartment.set(null); this.showForm.set(true); }
   openEdit(dept: Department): void { this.selectedDepartment.set(dept); this.showForm.set(true); }
   closeForm(): void { this.showForm.set(false); this.selectedDepartment.set(null); }
@@ -147,7 +147,7 @@ export class Departments implements OnInit {
     });
     if (!ok) return;
 
-    // Use deptId — the real backend primary key
+    
     this.deptSvc.delete(dept.deptId).subscribe({
       next: () => {
         this.toast.success(`${dept.deptName} has been deleted.`);
@@ -170,14 +170,14 @@ export class Departments implements OnInit {
     });
     if (!ok) return;
 
-    // Use deptId — the real backend primary key
+    
     this.deptSvc.toggleStatus(dept.deptId, newStatus).subscribe({
       next: () => {
         this.toast.success(`${dept.deptName} is now ${newStatus ? 'active' : 'inactive'}.`);
         this.loadDepartments();
       },
       error: () => {
-        // Optimistic fallback
+        
         this.departments.update(list =>
           list.map(d => d.deptId === dept.deptId ? { ...d, isActive: newStatus } : d)
         );

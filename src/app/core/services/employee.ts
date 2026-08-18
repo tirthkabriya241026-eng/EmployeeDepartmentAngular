@@ -27,26 +27,26 @@ export class EmployeeService {
     return [];
   }
 
-  /** GET /api/Employee?pageSize=1000&pageNumber=1 */
+  
   getAll(): Observable<Employee[]> {
     return this.http.get<any>(`${this.url}?pageSize=1000&pageNumber=1`).pipe(
-      map(r => this.unwrap(r) as Employee[]),
+      map((r: any) => this.unwrap(r) as Employee[]),
       catchError(this.handleError)
     );
   }
 
-  /** GET /api/Employee/deleted */
+  
   getDeleted(): Observable<Employee[]> {
     return this.http.get<any>(`${this.url}/deleted`).pipe(
-      map(r => this.unwrap(r) as Employee[]),
+      map((r: any) => this.unwrap(r) as Employee[]),
       catchError(() => of([] as Employee[]))
     );
   }
 
-  /** GET /api/Employee/{id} */
+  
   getById(id: number): Observable<Employee> {
     return this.http.get<any>(`${this.url}/${id}`).pipe(
-      map(r => (r?.data ?? r) as Employee),
+      map((r: any) => (r?.data ?? r) as Employee),
       catchError(this.handleError)
     );
   }
@@ -54,51 +54,51 @@ export class EmployeeService {
   
   getForDropdown(excludeId?: number): Observable<EmployeeOption[]> {
     return this.http.get<any>(`${this.url}?pageSize=1000&pageNumber=1`).pipe(
-      map(r => {
+      map((r: any) => {
         const list = this.unwrap(r) as Employee[];
         return list
-          .filter(e =>
+          .filter((e: Employee) =>
             !e.isDeleted &&
             e.isActive !== false &&
             (excludeId == null || e.empId !== excludeId)
           )
-          .map(e => ({ empId: e.empId, name: e.name }));
+          .map((e: Employee) => ({ empId: e.empId, name: e.name }));
       }),
       catchError(() => of([] as EmployeeOption[]))
     );
   }
 
-  /** POST /api/Employee */
+  
   create(data: EmployeeRequest): Observable<Employee> {
     return this.http.post<any>(this.url, data, { headers: this.jsonHeaders }).pipe(
-      map(r => (r?.data ?? r) as Employee),
+      map((r: any) => (r?.data ?? r) as Employee),
       catchError(this.handleError)
     );
   }
 
-  /** PUT /api/Employee/{id} */
+  
   update(id: number, data: EmployeeRequest): Observable<Employee> {
     return this.http.put<any>(`${this.url}/${id}`, data, { headers: this.jsonHeaders }).pipe(
-      map(r => (r?.data ?? r) as Employee),
+      map((r: any) => (r?.data ?? r) as Employee),
       catchError(this.handleError)
     );
   }
 
-  /** DELETE /api/Employee/{id} — backend soft-deletes */
+  
   softDelete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.url}/${id}`).pipe(
       catchError(this.handleError)
     );
   }
 
-  /** PUT /api/Employee/{id}/restore */
+  
   restore(id: number): Observable<void> {
     return this.http.put<void>(`${this.url}/${id}/restore`, {}, { headers: this.jsonHeaders }).pipe(
       catchError(this.handleError)
     );
   }
 
-  /** PUT /api/Employee/{id}/status */
+  
   toggleStatus(id: number, isActive: boolean): Observable<void> {
     return this.http.put<void>(
       `${this.url}/${id}/status`,
